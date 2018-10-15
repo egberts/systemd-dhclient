@@ -46,6 +46,43 @@ I cannot safely write a script to auto-modify all these root-owned system files 
 
 You can also safely run it in as a root-user with zero impact on your /etc directory and its content.  If you do run as a root user, the files in build/ will have their correct file permissions and file ownerships too.
 
+## Your prerequisites
+
+After creating the build/ subdirectory and its content, you'll want to do a checklist before copying your custom-built files over as is.
+
+NOTE: You cannot have both systemd-networkd and NetworkManager systemd units enabled and/or running: pick only one, then disable the other.
+
+    systemctl is-active systemd-networkd NetworkManager
+
+output result should show:
+
+    active
+    inactive
+
+If systemd-networkd is active, you're good.
+
+
+##  Final Step 
+
+Kill off all older DHCP client daemons.
+
+    killall -KILL dhclient
+    killall -KILL dhcpcd
+    killall -KILL udhcp
+    # older systemd DHCP client will go away ... in following steps
+
+Make your current systemd take in all those new files.
+
+    systemctl daemon-reload
+
+Activate the new systemd unit file, dhclient@ethX.service
+
+    systemctl enable dhclient@ethX.service
+    systemctl start dhclient@ethX.service
+
+And restart the network
+
+    systemctl restart networking.service
 
 ## Obtaining help
 
