@@ -37,10 +37,11 @@ echo "My ISP-provided WAN-side MAC address is: ${ISP_CPE_ROUTER_WAN_MAC}"
 
 mkdir -p build/etc/default
 echo "Copying default environment file..."
-cp etc/default/dhclient build/etc/default/dhclient
-sed -i '1 i# File: \/etc\/default\/dhclient' build/etc/default/dhclient
-chown root:root build/etc/default/dhclient
-chmod 0640 build/etc/default/dhclient
+DEFAULT_FILE=etc/default/dhclient
+cp ${DEFAULT_FILE} build/${DEFAULT_FILE}
+sed -i '1 i# File: \/etc\/default\/dhclient' build/${DEFAULT_FILE}
+chown root:root build/${DEFAULT_FILE}
+chmod 0640 build/${DEFAULT_FILE}
 
 DEFAULT_DHCLIENT_INTF=etc/default/dhclient.${INTERFACE}
 cp etc/default/dhclient.interface-specific build/${DEFAULT_DHCLIENT_INTF}
@@ -62,7 +63,7 @@ echo "Sample files are in etc/dhcp/dhclient-enter-hooks.d directory."
 # .link files for systemd network
 echo " "
 echo "Going through *.link files in /etc/systemd/network ..."
-DOTLINK_FILELIST=`find /etc/systemd/network -name "*.link" -printf "%f "`
+DOTLINK_FILELIST=`find /etc/systemd/network -maxdepth 0 -name "*.link" -printf "%f "`
 DOTLINK_COUNT=0
 for THISFILE in ${DOTLINK_FILELIST}; do
   # Search for any prior or existing interface amongst the systemd link files
@@ -80,6 +81,7 @@ if [ 0 -eq ${DOTLINK_COUNT} ]; then
   echo " "
   echo "Creating build/${NEW_DOTLINKFILE} file ..."
   cp etc/systemd/network/10-eth.link build/${NEW_DOTLINKFILE}
+  sed -i "1 i# File: /etc/systemd/network/10-${INTERFACE}" build/${NEW_DOTLINKFILE}
   sed -i "s/REPLACE_WITH_MY_NEW_GATEWAY_PUBLIC_INTERNET_NETDEV_NAME/${INTERFACE}/g" build/${NEW_DOTLINKFILE}
   sed -i "s/REPLACE_WITH_ISP_CPE_WAN_MAC_ADDRESS/${ISP_CPE_ROUTER_WAN_MAC}/g" build/${NEW_DOTLINKFILE}
   chown root:root build/${NEW_DOTLINKFILE}
@@ -109,7 +111,7 @@ fi
 # .network files for systemd network
 echo " "
 echo "Going through *.network files in /etc/systemd/network ..."
-DOTNETWORK_FILELIST=`find /etc/systemd/network -name "*.network" -printf "%f "`
+DOTNETWORK_FILELIST=`find /etc/systemd/network -maxdepth 0 -name "*.network" -printf "%f "`
 DOTNETWORK_COUNT=0
 for THISFILE in ${DOTNETWORK_FILELIST}; do
   # Search for any prior or existing interface amongst the systemd link files
@@ -149,7 +151,7 @@ elif [ 1 -eq ${DOTNETWORK_COUNT} ]; then
     sed -i 's/^[Uu][Nn][Mm][Aa][Nn][Aa][Gg][Ee][Dd] *= *.*/Unmanaged=yes/g' build/${EXISTING_DOTNETWORKFILE}
   else
     echo "Unmanaged=yes option missing, inserting into build/${EXISTING_DOTNETWORKFILE}..."
-    sed 's/.*Name *=.*/&\nUnmanaged=yes\n/' build/${EXISTING_DOTNETWORKFILE}
+    sed -i 's/.*Name *=.*/&\nUnmanaged=yes\n/' build/${EXISTING_DOTNETWORKFILE}
   fi
   chown root:root build/${EXISTING_DOTNETWORKFILE}
   chmod 0640 build/${EXISTING_DOTNETWORKFILE}
