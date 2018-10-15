@@ -1,8 +1,6 @@
 
 Using DHCLIENT on systemd (starting with Debian).
 
-![systemd_dhclient_diagram](http://www.burningcutlery.com/images/dynamorio/drlogo.png)
-
 
 
 ## About systemd-dhclient
