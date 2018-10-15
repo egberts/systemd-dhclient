@@ -90,26 +90,26 @@ To report a bug, use the [issue tracker](https://github.com/egberts/systemd-dhcl
 
 ## Graphs of systetmd
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/dhclient@eth1.service.svg)[dhclient@eth1.service]
+![dhclient@eth1.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/dhclient@eth1.service.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/system-dhclient.slice.svg([system-dhclient.slice]
+![system-dhclient.slice](https://github.com/egberts/systemd-dhclient/blob.master/doc/system-dhclient.slice.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/custom.svg)[Master diagram]
+![Master diagram](https://github.com/egberts/systemd-dhclient/blob.master/doc/custom.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob/master/doc/bind9.service.svg)[bind9.service]
+![bind9.service](https://github.com/egberts/systemd-dhclient/blob/master/doc/bind9.service.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/networking.service.svg)[networking.service]
+![networking.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/networking.service.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/network-online.target.svg)[network-online.target]
+![network-online.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/network-online.target.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/network-pre.target.svg)[network-pre.target]
+![network-pre.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/network-pre.target.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/network.target.svg)[network.target]
+![network.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/network.target.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/nginx.service.svg)[nginx.service]
+![nginx.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/nginx.service.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/nss-lookup.target.svg)[nss-lookup.target]
+![nss-lookup.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/nss-lookup.target.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/shorewall.service.svg)[shorewall]
+![shorewall.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/shorewall.service.svg)
 
-(https://github.com/egberts/systemd-dhclient/blob.master/doc/sys-subsystem-net-devices-eth1.device.svg)[sys-subsystem-net-devices-eth1.device]
+![sys-subsystem-net-devices-eth1.device](https://github.com/egberts/systemd-dhclient/blob.master/doc/sys-subsystem-net-devices-eth1.device.svg)
