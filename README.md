@@ -88,3 +88,28 @@ And restart the network
 
 To report a bug, use the [issue tracker](https://github.com/egberts/systemd-dhclient/issues).
 
+## Graphs of systetmd
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/dhclient@eth1.service.svg)[dhclient@eth1.service]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/system-dhclient.slice.svg([system-dhclient.slice]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/custom.svg)[Master diagram]
+
+(https://github.com/egberts/systemd-dhclient/blob/master/doc/bind9.service.svg)[bind9.service]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/networking.service.svg)[networking.service]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/network-online.target.svg)[network-online.target]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/network-pre.target.svg)[network-pre.target]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/network.target.svg)[network.target]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/nginx.service.svg)[nginx.service]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/nss-lookup.target.svg)[nss-lookup.target]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/shorewall.service.svg)[shorewall]
+
+(https://github.com/egberts/systemd-dhclient/blob.master/doc/sys-subsystem-net-devices-eth1.device.svg)[sys-subsystem-net-devices-eth1.device]
