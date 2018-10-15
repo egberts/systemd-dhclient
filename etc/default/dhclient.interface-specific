@@ -1,0 +1,29 @@
+#
+# Environment variables used by dhclient
+#
+# systemd dhclient@.service will read in two environment files
+#   /etc/default/dhclient
+#   /etc/default/dhclient.%I, where %I is the network device name (ie. eth0)
+#
+# Main dhclient environment file is required for startup, 
+# If main file ismissing, dhclient startup will not occur.
+# Device-specific dhclient environment file are optional.
+#
+# Security: until dhclient does process-capability-drop in Linux 
+# capabilities 
+# (Ubuntu patched in 2005, not upstreamed yet)
+# (Ubuntu patched in 2018, 
+#    https://bugs.launchpad.net/ubuntu/+source/isc-dhcp/+bug/1759032 )
+# File permission should be 0640
+# File ownership should be root:root
+# Scope of reading environment file is at root
+
+# dhclient 4.3.5 takes in the following environment names:
+# This systemd-dhclient package does not advocate use of 
+#     these environment names for dhclient production.
+#
+# PATH_DHCLIENT_CONF The dhclient.conf configuration file.
+# PATH_DHCLIENT_DB The dhclient.leases database.
+# PATH_DHCLIENT_PID The dhclient PID file.
+# PATH_DHCLIENT_SCRIPT The dhclient-script file.
+#

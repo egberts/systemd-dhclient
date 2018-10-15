@@ -1,0 +1,86 @@
+#
+# File: /etc/dhcp/dhclient-enter-hooks.d/shorewall
+#
+# Description: DHCLIENT 'enter' Script for shorewall firewall 
+#              Gets executed when DHCLIENT receives an assigned IP address
+#
+# Security: until dhclient does process-capability-drop of Linux 
+# capabilities 
+# (Ubuntu patched in 2005, not upstreamed yet)
+# (Ubuntu patched in 2018, 
+#    https://bugs.launchpad.net/ubuntu/+source/isc-dhcp/+bug/1759032 )
+# File permission should be 0640
+# File ownership should be root:root
+# Scope of reading environment file is at systetmd's assigned
+#     environment and Linux capabilities.
+#
+# Tips:
+# * Be careful about changing the environment since this is sourced
+# * This script fragment uses bash features
+# * As of isc-dhcp-client 4.2 the "reason" (for running this script) can 
+#       be one of the following (from dhclient-script(8) man page):
+#    MEDIUM(0) 
+#    PREINIT(0)  
+#    BOUND(M)  
+#    RENEW(M)  
+#    REBIND(M)  
+#    REBOOT(M)         
+#    EXPIRE(D)  
+#    FAIL(D) 
+#    RELEASE(D)  
+#    STOP(D) 
+#    NBI(-) 
+#    TIMEOUT(M)
+# Below are also used in dhclient master script (default: /sbin/dhclient-script)
+#    ARPCHECK(0)
+#    ARPSEND(0)
+#    PREINIT6(0) 
+#    BOUND6(M)
+#    RENEW6(M)
+#    REBIND6(M)
+#    DEPREF6(0)
+#    EXPIRE6(D)
+#    RELEASE6(D)
+#    STOP6(D)
+# Legend:
+#   (0) = master script does not run make_resolv_conf
+#   (M) = master script runs make_resolv_conf
+#   (D) = master script downs interface
+#   (-) = master script does nothing with this
+#
+
+firewall_setup() {
+    # No need to continue if we're called with an unsupported option
+
+    case $reason in
+#    Took off RENEW because excessive eth1 down/up cycle interruption
+#    BOUND|RENEW|REBIND|REBOOT|EXPIRE|FAIL|RELEASE|STOP)
+    BOUND|REBIND|REBOOT|FAIL|RELEASE|STOP)
+        # DO NOT TOUCH FIREWALL outside of 'eth1'
+        if [ "$interface" != "eth1" ]; then
+            return
+        fi
+        # dhclient environment variables defined in dhclient-script(8) man page
+        logger "shorewall refresh at $interface due to DHCP $reason"
+        logger "... medium: $medium alias_ip: $alias_ip_address routers: $routers"
+        logger "... new_ip: $new_ip_address new_subnet_mask: $new_subnet_mask"
+        logger "... new_domain: $new_domain_name new_dns_servers: $new_domain_name_servers"
+        logger "... new_routers: $new_routers new_static_routes: $new_static_routes"
+    	;;
+# TODO: Add REBOOT|FAIL|STOP) to execute 'shorewall stop'
+# useful for custom-clampdown of firewalls
+    *)
+    	return
+    	;;
+    esac
+
+    umask 022
+
+    # reload the shorewall server
+    # [ -x /sbin/shorewall ] && /sbin/shorewall refresh
+    [ -x /sbin/shorewall ] && /sbin/shorewall restart
+
+}
+
+firewall_setup
+exit 0

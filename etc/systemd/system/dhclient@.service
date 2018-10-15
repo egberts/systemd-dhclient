@@ -1,0 +1,45 @@
+# cat /etc/systemd/system/dhclient@.service 
+[Unit]
+Description=dhclient on %I
+Documentation=man:dhclient(8)
+
+# dhclient wants network.target afterward
+# dhclient will stay up regardlessof network.target failure
+Wants=network.target
+
+#
+Before=network.target
+
+# Binds to a specific device based on %i
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+[Service]
+# Reads /etc/dhcp/dhclient.conf, by default
+# Invokes /sbin/dhclient-script, by default, upon receiving a lease IP
+# Force dhclient to run in foreground and let systemd handle all Unix FDs (0,1, and 2)
+ExecStart=/sbin/dhclient -4 -d -v -cf /etc/dhcp/dhclient.%I.conf -pf /var/run/dhclient.%I.pid -lf /var/lib/dhcp/dhclient.%I.leases %I
+Type=simple
+PIDFile=/var/run/dhclient.%I.pid
+
+# DHCLIENT should never exit, ever.  
+# DHCLIENT should not use '-1' option nor handle exit code 2 in a special way
+Restart=always
+##### TBD ExecStop=/sbin/dhclient -x
+##### TBD ExecReload=/sbin/dhclient -r
+#StandardInput=null
+#StandardOutput=journal
+#StandardError=journal
+
+# Environment variables used by dhclient
+#  Could define those envname in /etc/default/dhclient.%I  
+# PATH_DHCLIENT_CONF The dhclient.conf configuration file.
+# PATH_DHCLIENT_DB The dhclient.leases database.
+# PATH_DHCLIENT_PID The dhclient PID file.
+# PATH_DHCLIENT_SCRIPT The dhclient-script file.
+# environment filespec is prefaced with '-' as to ignore if unreadable or nonexisting
+EnvironmentFile=-/etc/default/dhclient
+EnvironmentFile=-/etc/default/dhclient.%I
+
+[Install]
+WantedBy=multi-user.target

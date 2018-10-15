@@ -1,0 +1,9 @@
+[Match]
+Name=REPLACE_WITH_MY_NEW_GATEWAY_PUBLIC_INTERNET_NETDEV_NAME
+
+[Network]
+# systemd's DHCP is turned off due to lack of DHCP-Options support
+# We use dhclient instead of systemd-networkd's DHCP
+DHCP=no
+Unmanaged=yes
+

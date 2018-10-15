@@ -1,0 +1,21 @@
+#
+# File: /etc/rc.local, supplemental to
+#
+
+#  Emulate the Cable modem/router
+#  Fool the Motorola-ONT 
+#  That white utility box provided by Verizon FiOS that
+#  their marketing people call "Fibre-To-The-Home (FTTH)"
+#
+#  You can obtain the MAC address of the ISP-provided router
+#  by logging into that router via http://192.168.1.1/
+#
+#  You cannot get the MAC address by pinging from your laptop/PC
+#  as doing this will get you the wrong MAC address (ISP router's LAN-side).
+#
+#  We are looking for the WAN-side MAC address of the ISP-provided router.
+#  We are NOT looking for the multiport LAN-side MAC address of 
+#      the ISP-provided router.
+#
+
+ifconfig eth1 hw ether REPLACE_WITH_ISP_WAN_MACADDRESS

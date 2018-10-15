@@ -1,0 +1,12 @@
+[Match]
+
+# Each host machine is different with Path=
+Path=pci-0000:04:02.0-*
+Virtualization=no
+
+[Link]
+# Name= is typically 'eth0'
+Name=REPLACE_WITH_MY_NEW_GATEWAY_PUBLIC_INTERNET_NETDEV_NAME
+MACAddress=REPLACE_WITH_ISP_CPE_WAN_MAC_ADDRESS
+BitsPerSecond=1G
+WakeOnLan=off
