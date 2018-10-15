@@ -1,0 +1,16 @@
+digraph systemd {
+	"networking.service"->"network-pre.target" [color="green"];
+	"networking.service"->"systemd-modules-load.service" [color="green"];
+	"networking.service"->"apparmor.service" [color="green"];
+	"networking.service"->"systemd-sysctl.service" [color="green"];
+	"networking.service"->"system.slice" [color="green"];
+	"networking.service"->"systemd-journald.socket" [color="green"];
+	"networking.service"->"local-fs.target" [color="green"];
+	"networking.service"->"resolvconf.service" [color="green"];
+	"networking.service"->"system.slice" [color="black"];
+	"networking.service"->"network.target" [color="grey66"];
+	"network.target"->"networking.service" [color="green"];
+	"network-online.target"->"networking.service" [color="green"];
+	"network-online.target"->"networking.service" [color="grey66"];
+	"multi-user.target"->"networking.service" [color="grey66"];
+}

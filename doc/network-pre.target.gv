@@ -1,0 +1,7 @@
+digraph systemd {
+	"networking.service"->"network-pre.target" [color="green"];
+	"network-pre.target"->"ebtables.service" [color="green"];
+	"network.target"->"network-pre.target" [color="green"];
+	"systemd-networkd.service"->"network-pre.target" [color="green"];
+	"ebtables.service"->"network-pre.target" [color="grey66"];
+}

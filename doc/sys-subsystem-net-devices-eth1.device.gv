@@ -1,0 +1,3 @@
+digraph systemd {
+	"dhclient@eth1.service"->"sys-subsystem-net-devices-eth1.device" [color="green"];
+}

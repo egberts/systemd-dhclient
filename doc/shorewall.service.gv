@@ -1,0 +1,13 @@
+digraph systemd {
+	"shorewall.service"->"system.slice" [color="green"];
+	"shorewall.service"->"basic.target" [color="green"];
+	"shorewall.service"->"systemd-journald.socket" [color="green"];
+	"shorewall.service"->"sysinit.target" [color="green"];
+	"shorewall.service"->"network-online.target" [color="green"];
+	"shorewall.service"->"sysinit.target" [color="black"];
+	"shorewall.service"->"system.slice" [color="black"];
+	"shorewall.service"->"network-online.target" [color="grey66"];
+	"shorewall.service"->"iptables.service" [color="red"];
+	"shorewall.service"->"firewalld.service" [color="red"];
+	"basic.target"->"shorewall.service" [color="grey66"];
+}

@@ -1,0 +1,11 @@
+digraph systemd {
+	"postfix@-.service"->"nss-lookup.target" [color="green"];
+	"bind9.service"->"nss-lookup.target" [color="grey66"];
+	"opendkim.service"->"nss-lookup.target" [color="green"];
+	"nss-lookup.target"->"bind9.service" [color="green"];
+	"apache2.service"->"nss-lookup.target" [color="green"];
+	"openvswitch-switch.service"->"nss-lookup.target" [color="green"];
+	"nginx.service"->"nss-lookup.target" [color="green"];
+	"isc-dhcp-server.service"->"nss-lookup.target" [color="green"];
+	"exim4.service"->"nss-lookup.target" [color="green"];
+}

@@ -1,0 +1,14 @@
+digraph systemd {
+	"multi-user.target"->"nginx.service" [color="green"];
+	"multi-user.target"->"nginx.service" [color="grey66"];
+	"nginx.service"->"systemd-journald.socket" [color="green"];
+	"nginx.service"->"remote-fs.target" [color="green"];
+	"nginx.service"->"nss-lookup.target" [color="green"];
+	"nginx.service"->"system.slice" [color="green"];
+	"nginx.service"->"basic.target" [color="green"];
+	"nginx.service"->"network-online.target" [color="green"];
+	"nginx.service"->"sysinit.target" [color="green"];
+	"nginx.service"->"sysinit.target" [color="black"];
+	"nginx.service"->"system.slice" [color="black"];
+	"nginx.service"->"network-online.target" [color="grey66"];
+}

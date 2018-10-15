@@ -1,0 +1,26 @@
+digraph systemd {
+	"ssh.service"->"network.target" [color="green"];
+	"fail2ban.service"->"network.target" [color="green"];
+	"dhclient@eth1.service"->"network.target" [color="grey66"];
+	"networking.service"->"network.target" [color="grey66"];
+	"rc-local.service"->"network.target" [color="green"];
+	"unattended-upgrades.service"->"network.target" [color="green"];
+	"libvirtd.service"->"network.target" [color="green"];
+	"bind9.service"->"network.target" [color="green"];
+	"libvirt-guests.service"->"network.target" [color="green"];
+	"mariadb.service"->"network.target" [color="green"];
+	"opendkim.service"->"network.target" [color="green"];
+	"forked-daapd.service"->"network.target" [color="green"];
+	"systemd-user-sessions.service"->"network.target" [color="green"];
+	"network.target"->"networking.service" [color="green"];
+	"network.target"->"systemd-networkd.service" [color="green"];
+	"network.target"->"network-pre.target" [color="green"];
+	"network.target"->"dhclient@eth1.service" [color="green"];
+	"apache2.service"->"network.target" [color="green"];
+	"network-online.target"->"network.target" [color="green"];
+	"systemd-networkd.service"->"network.target" [color="grey66"];
+	"supervisor.service"->"network.target" [color="green"];
+	"memcached.service"->"network.target" [color="green"];
+	"rabbitmq-server.service"->"network.target" [color="green"];
+	"iscsid.service"->"network.target" [color="green"];
+}

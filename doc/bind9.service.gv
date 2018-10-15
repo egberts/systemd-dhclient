@@ -1,0 +1,13 @@
+digraph systemd {
+	"bind9.service"->"systemd-journald.socket" [color="green"];
+	"bind9.service"->"network.target" [color="green"];
+	"bind9.service"->"system.slice" [color="green"];
+	"bind9.service"->"basic.target" [color="green"];
+	"bind9.service"->"sysinit.target" [color="green"];
+	"bind9.service"->"sysinit.target" [color="black"];
+	"bind9.service"->"system.slice" [color="black"];
+	"bind9.service"->"nss-lookup.target" [color="grey66"];
+	"nss-lookup.target"->"bind9.service" [color="green"];
+	"multi-user.target"->"bind9.service" [color="green"];
+	"multi-user.target"->"bind9.service" [color="grey66"];
+}

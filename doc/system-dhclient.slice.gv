@@ -1,0 +1,6 @@
+digraph systemd {
+	"dhclient@eth1.service"->"system-dhclient.slice" [color="green"];
+	"dhclient@eth1.service"->"system-dhclient.slice" [color="black"];
+	"system-dhclient.slice"->"system.slice" [color="green"];
+	"system-dhclient.slice"->"system.slice" [color="black"];
+}

@@ -1,0 +1,13 @@
+digraph systemd {
+	"dhclient@eth1.service"->"systemd-journald.socket" [color="green"];
+	"dhclient@eth1.service"->"sys-subsystem-net-devices-eth1.device" [color="green"];
+	"dhclient@eth1.service"->"basic.target" [color="green"];
+	"dhclient@eth1.service"->"system-dhclient.slice" [color="green"];
+	"dhclient@eth1.service"->"sysinit.target" [color="green"];
+	"dhclient@eth1.service"->"system-dhclient.slice" [color="black"];
+	"dhclient@eth1.service"->"sysinit.target" [color="black"];
+	"dhclient@eth1.service"->"network.target" [color="grey66"];
+	"network.target"->"dhclient@eth1.service" [color="green"];
+	"multi-user.target"->"dhclient@eth1.service" [color="green"];
+	"multi-user.target"->"dhclient@eth1.service" [color="grey66"];
+}
