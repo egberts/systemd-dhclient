@@ -90,26 +90,4 @@ To report a bug, use the [issue tracker](https://github.com/egberts/systemd-dhcl
 
 ## Graphs of systetmd
 
-![dhclient@eth1.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/dhclient@eth1.service.jpg)
-
-![system-dhclient.slice](https://github.com/egberts/systemd-dhclient/blob.master/doc/system-dhclient.slice.jpg)
-
-![Master diagram](https://github.com/egberts/systemd-dhclient/blob.master/doc/custom.jpg)
-
-![bind9.service](https://github.com/egberts/systemd-dhclient/blob/master/doc/bind9.service.svg)
-
-![networking.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/networking.service.svg)
-
-![network-online.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/network-online.target.svg)
-
-![network-pre.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/network-pre.target.svg)
-
-![network.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/network.target.svg)
-
-![nginx.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/nginx.service.svg)
-
-![nss-lookup.target](https://github.com/egberts/systemd-dhclient/blob.master/doc/nss-lookup.target.svg)
-
-![shorewall.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/shorewall.service.svg)
-
-![sys-subsystem-net-devices-eth1.device](https://github.com/egberts/systemd-dhclient/blob.master/doc/sys-subsystem-net-devices-eth1.device.svg)
+For a graph of various systtetmd dependency chart related to dhclient@.service, see [this wiki here](https://github.com/egberts/systemd-dhclient/wiki).
