@@ -4,7 +4,7 @@ DHCLIENT on systemd (starting with Debian distro).
 
 ## About systemd-dhclient
 
-ISC DHCP client is superior in many aspects over systemd DHCP client.
+You have many DHCP clients, but systemd only starts one.  This here will allow separate ISC dhclients to run independently on platforms running `systemd`.
 
 
 ## Why did I make this?
@@ -90,11 +90,11 @@ To report a bug, use the [issue tracker](https://github.com/egberts/systemd-dhcl
 
 ## Graphs of systetmd
 
-![dhclient@eth1.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/dhclient@eth1.service.svg)
+![dhclient@eth1.service](https://github.com/egberts/systemd-dhclient/blob.master/doc/dhclient@eth1.service.jpg)
 
-![system-dhclient.slice](https://github.com/egberts/systemd-dhclient/blob.master/doc/system-dhclient.slice.svg)
+![system-dhclient.slice](https://github.com/egberts/systemd-dhclient/blob.master/doc/system-dhclient.slice.jpg)
 
-![Master diagram](https://github.com/egberts/systemd-dhclient/blob.master/doc/custom.svg)
+![Master diagram](https://github.com/egberts/systemd-dhclient/blob.master/doc/custom.jpg)
 
 ![bind9.service](https://github.com/egberts/systemd-dhclient/blob/master/doc/bind9.service.svg)
 
