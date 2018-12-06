@@ -1,0 +1,21 @@
+#
+case "$reason" in
+  FAIL)
+        logger "FAILED refresh at ${interface} due to DHCP $reason"
+        logger "... ip_addr: ${ip_address} subnet_mask: ${subnet_mask} domain_name: ${domain_name} dns servers: ${dns_servers} static route: ${static_routes}"
+        logger "... medium: ${medium} alias_ip: ${alias_ip_address} routers: ${routers} "
+        logger "... new_medium: ${new_medium} new_alias_ip: ${new_alias_ip_address} new_routers: ${new_routers} "
+        logger "... new_ip: ${new_ip_address} new_subnet_mask: ${new_subnet_mask}"
+        logger "... old_ip: ${old_ip_address} old_subnet_mask: ${old_subnet_mask}"
+        logger "... new_domain: ${new_domain_name} new_dns_servers: ${new_domain_name_servers}"
+        logger "... old_domain: ${old_domain_name} old_dns_servers: ${old_domain_name_servers}"
+        logger "... new_routers: ${new_routers} new_static_routes: ${new_static_routes}"
+        logger "... old_routers: ${old_routers} old_static_routes: ${old_static_routes}"
+        wall "FAILED refresh at ${interface} due to DHCP $reason"
+        wall "... medium: ${medium} alias_ip: ${alias_ip_address} routers: ${routers}"
+        wall "... new_ip: ${new_ip_address} new_subnet_mask: ${new_subnet_mask}"
+        wall "... new_domain: ${new_domain_name} new_dns_servers: ${new_domain_name_servers}"
+        wall "... new_routers: ${new_routers} new_static_routes: ${new_static_routes}"
+
+    ;;
+esac

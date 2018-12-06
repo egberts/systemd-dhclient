@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 # File: /etc/dhcp/dhclient-enter-hooks.d/shorewall
 #
@@ -83,4 +84,5 @@ firewall_setup() {
 }
 
 firewall_setup
-exit 0
+
+# TODO: Need better handling if firewall setup fails here
